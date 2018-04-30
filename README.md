@@ -6,3 +6,6 @@ Raspberry Pi 3 Quick Start Guide
 
 ### Fix laggy mouse pointer (Microsoft keyboard with touchpad)
 Add `usbhid.mousepoll=0` to /boot/cmdline.txt
+
+### Disable screensaver
+`sudo apt-get install xscreensaver` and disable using xscreensaver's UI
