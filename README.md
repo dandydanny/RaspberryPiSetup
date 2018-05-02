@@ -10,6 +10,9 @@ Add `usbhid.mousepoll=0` to /boot/cmdline.txt
 ### Disable screensaver
 `sudo apt-get install xscreensaver` and disable using xscreensaver's UI
 
+### Flip image vertically
+In `/boot/config.txt`, add `lcd_rotate=2`
+
 ### Adjust 7" Touchscreen Brightness
 Open `/sys/class/backlight/rpi_backlight/brightness` and modify integer value, 0-255
 
