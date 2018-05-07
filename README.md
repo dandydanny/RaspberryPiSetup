@@ -2,6 +2,8 @@
 Raspberry Pi 3 Quick Start Guide
 
 ### Transfer image to microSD card
+**Mac:** Unmount card first, usually /dev/rdisk2
+
 `sudo dd bs=1m if=2018-04-18-raspbian-stretch.img of=/dev/rdisk2 conv=sync`
 
 ### Fix laggy mouse pointer (Microsoft keyboard with touchpad)
