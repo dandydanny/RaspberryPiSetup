@@ -8,6 +8,9 @@ Raspberry Pi 3 Quick Start Guide
 
 ### Fix laggy mouse pointer (Microsoft keyboard with touchpad)
 Add `usbhid.mousepoll=0` to /boot/cmdline.txt
+`sudo nano /boot/cmdline.txt` to open
+`CTRL`+`O` to wrie-out changes, `Enter` to confirm
+`CTRL`+`X` to exit Nano editor.
 
 ### Disable screensaver
 `sudo apt-get install xscreensaver` and disable using xscreensaver's UI
