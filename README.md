@@ -36,3 +36,10 @@ Next, upgrade all your installed packages to their latest versions with the comm
 Clear downloaded package files (.deb files) in `/var/cache/apt/archives`:
 
 `sudo apt-get clean`
+
+### Make terminal alias
+In home directory:
+`nano .bashrc`
+
+Add:
+`alias ll='ls -lah'`
