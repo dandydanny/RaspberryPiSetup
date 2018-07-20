@@ -50,3 +50,22 @@ Edit the backlight rules file:
 
 Insert line:
 `SUBSYSTEM=="backlight",RUN+="/bin/chmod 666 /sys/class/backlight/%k/brightness /sys/class/backlight/%k/bl_power"`
+
+### Automatic backlight brightness change by Cds sensor
+Code:
+```
+from gpiozero import LightSensor
+from time import sleep
+f = open('/sys/class/backlight/rpi_backlight/brightness', 'w')
+sensor = LightSensor(18, charge_time_limit=0.2, threshold=0.1)
+while True:
+    print("Sensor value: ", sensor.value)
+    lightValue = round(255 * sensor.value + 15)
+    if lightValue > 255:
+        lightValue = 255
+    print("Light value: ", lightValue)
+    f.seek(0)
+    f.write(str(lightValue))
+    f.truncate()
+    sleep(0.2)
+```
