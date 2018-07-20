@@ -94,7 +94,7 @@ Description=Get auto brightness service running at boot
 After=mosquitto.service mysql.service
 
 [Service]
-ExecStart=/usr/bin/python3 /home/autobrightness/autobrightness.py
+ExecStart=/usr/bin/python3 /home/pi/autobrightness/autobrightness.py
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
