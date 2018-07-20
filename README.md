@@ -81,3 +81,40 @@ while True:
         f.truncate()
     sleep(1)
 ```
+
+## Enable autorun of autobrightness.py on boot, by making it a systemd service
+
+
+In `/etc/systemd/system` Make `autobrightness.service` file.
+
+Put in following:
+```
+[Unit]
+Description=Get auto brightness service running at boot
+After=mosquitto.service mysql.service
+
+[Service]
+ExecStart=/usr/bin/python3 /home/autobrightness/autobrightness.py
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=autobrightness
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable service:
+
+`sudo systemctl enable autobrightness.service`
+
+Start clock for current boot only:
+
+`sudo systemctl start autobrightness.service`
+
+Check if it's running:
+
+`systemctl status autobrightness.service`
+
