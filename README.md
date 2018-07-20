@@ -56,16 +56,28 @@ Code:
 ```
 from gpiozero import LightSensor
 from time import sleep
+offset = 15
+max = 255
+min = 15
+prev = 0
+delta = 0
 f = open('/sys/class/backlight/rpi_backlight/brightness', 'w')
 sensor = LightSensor(18, charge_time_limit=0.2, threshold=0.1)
 while True:
     print("Sensor value: ", sensor.value)
-    lightValue = round(255 * sensor.value + 15)
-    if lightValue > 255:
-        lightValue = 255
+    lightValue = round(255 * sensor.value + offset)
+
+    if lightValue > max:
+        lightValue = max
+    if lightValue < min:
+        lightValue = min
     print("Light value: ", lightValue)
-    f.seek(0)
-    f.write(str(lightValue))
-    f.truncate()
-    sleep(0.2)
+    delta = abs(lightValue - prev)
+    if delta > 1:
+        print("Delta: ", abs(lightValue - prev))
+        prev = lightValue
+        f.seek(0)
+        f.write(str(lightValue))
+        f.truncate()
+    sleep(1)
 ```
