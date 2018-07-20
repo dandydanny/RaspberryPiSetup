@@ -43,3 +43,10 @@ In home directory:
 
 Add:
 `alias ll='ls -lah'`
+
+### Edit 7" touchscreen backlight 'file' permission
+Edit the backlight rules file:
+`sudo nano /etc/udev/rules.d/backlight-permissions.rules`
+
+Insert line:
+`SUBSYSTEM=="backlight",RUN+="/bin/chmod 666 /sys/class/backlight/%k/brightness /sys/class/backlight/%k/bl_power"`
