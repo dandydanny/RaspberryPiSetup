@@ -118,3 +118,23 @@ Check if it's running:
 
 `systemctl status autobrightness.service`
 
+
+GPIO Diagnostics Routine - change pin number to desired pin, and either source or sink an LED with 10K resistor. LED should blink:
+
+```
+import RPi.GPIO as GPIO
+import time
+
+pin = 18
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(pin,GPIO.OUT)
+while True:
+        print(pin,"HIGH")
+        GPIO.output(pin,GPIO.HIGH)
+        time.sleep(0.5)
+        print(pin,"LOW")
+        GPIO.output(pin,GPIO.LOW)
+        time.sleep(0.5)
+```
