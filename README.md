@@ -2,9 +2,9 @@
 Raspberry Pi 3 Quick Start Guide
 
 ### Transfer image to microSD card
-**Mac:** Unmount card first, usually /dev/rdisk2
+**Mac:** Unmount card's partition first, e.g. /dev/rdisk4s1 by launching Disk Utilities, then click `boot` partition then click `Unmount`.
 
-`sudo dd bs=1m if=2018-04-18-raspbian-stretch.img of=/dev/rdisk2 conv=sync`
+`sudo dd bs=1m if=2020-02-13-raspbian-buster-full.img of=/dev/rdisk4 conv=sync`
 
 ### Fix laggy mouse pointer (Microsoft keyboard with touchpad)
 Add `usbhid.mousepoll=0` to /boot/cmdline.txt
